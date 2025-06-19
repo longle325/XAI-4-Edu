@@ -1,0 +1,10 @@
+The task is to generate a plan for determining whether the statement in question is true, false or unknown. Give step-by-step plan for the given quesion. Note that you MUST NOT answer the question directly.
+
+
+Premises:
+[[CONTEXT]]
+Question:
+[[QUESTION]]
+-----
+
+Plan: Make sure you only derive the plan. Do not solve the question and do not determine the truth value of the conclusion at the planning stage. This plan will be used to help guiding a language model to follow step-by-step. You should use 100% natural language for your plan, and should not include any FOL expressions.

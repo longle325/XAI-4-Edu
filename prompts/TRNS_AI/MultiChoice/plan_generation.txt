@@ -1,0 +1,42 @@
+Given a set of premises and a multiple-choice question, derive a step-by-step plan that uses the premises and logical reasoning to infer new knowledge if needed, in order to determine the correct option. 
+Your plan should guide a language model to systematically evaluate each option.
+
+The answer must be one of the provided options (A, B, C, or D). Develop a systematic plan to reason correctly and combine with the corresponding options. You need to reason carefully and logically step by step to get the correct answer.
+
+Premises:
+[[CONTEXT]]
+Questions:
+[[QUESTION]]
+
+After your reasoning, provide the final answer in this format:
+    -Final answer: One of the provided options (A, B, C or D)
+    -idx: a list of premise indices used, in ascending order without duplicates. The list must avoid Over-inclusion and Under-inclusion.
+    -explanation: a brief but detailed natural language explanation summarizing your reasoning process. Clearly mention what premise you use for the answer here.
+
+Below is an example:
+###
+Premises: 
+1. If a Python code is well-tested, then the project is optimized.
+2. If a Python code does not follow PEP 8 standards, then it is not well-tested.
+3. All Python projects are easy to maintain.
+4. All Python code is well-tested.
+5. If a Python code follows PEP 8 standards, then it is easy to maintain.
+6. If a Python code is well-tested, then it follows PEP 8 standards.
+7. f a Python project is well-structured, then it is optimized.
+8. If a Python project is easy to maintain, then it is well-tested.
+9. If a Python project is optimized, then it has clean and readable code.
+10. All Python projects are well-structured.
+11. All Python projects have clean and readable code.
+12. There exists at least one Python project that follows best practices.
+13. There exists at least one Python project that is optimized.
+14. If a Python project is not well-structured, then it does not follow PEP 8 standards.
+
+Question: Which conclusion follows with the fewest premises?\nA. If a Python project is not optimized, then it is not well-tested\nB. If all Python projects are optimized, then all Python projects are well-structured\nC. If a Python project is well-tested, then it must be clean and readable\nD. If a Python project is not optimized, then it does not follow PEP 8 standards
+
+Extract answer to output format: 
+    -Final answer: A
+    -idx: [1]
+    -Explanation: Premise 1 states that if a Python project is well-tested, it is optimized. By logical contraposition, if a project is not optimized, it is not well-tested, supporting option A with the fewest premises. Option B is false because optimization does not imply well-structured projects. Option C follows from premises 4, 1, and 9 but requires more steps. Option D follows from premises 1 and 6 but is less direct than A.
+
+Ensure your reasoning uses only the given premises and adheres to the inference rules. If the question involves a conditional statement, treat the antecedent as a premise and prioritize it over conflicting premises.
+This is an example to guide you in solving another problem. Please do not use the knowledge in this example to solve other problems.

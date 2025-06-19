@@ -1,0 +1,38 @@
+Given the premises and a question, can you derive a step-by-step plan that uses the premises and logical reasoning to infer new knowledge if needed, in order to answer the question. Remember to refer the premises indicies when have the plan and given reasoning.
+You do not need to detail your reasoning during step-by-step planning.
+
+The answer may be an integer, a float (often with one or two decimals), a monetary value (with "$" in front). If multiple values are requested, present them in the question's order, separated by commas with no spaces (e.g., "6.0,7.0"). You need to carefully and logically calculate the correct answer step by step.
+
+**Note:** Round to 2 decimal places. If the second decimal digit is 0, round to 1 decimal place. In all other cases, round to 2 decimal places.
+---
+Below are the premises and questions you need to derive a plan to solve, please follow the instruction and example aforementioned.
+Premises:
+[[CONTEXT]]
+
+Questions:
+[[QUESTION]]
+
+After your reasoning, provide the final answer in this format:
+    -Final answer: <answer_part1>, <answer_part2>
+    -idx: a list of premise indices used for both parts 
+    -explanation: A brief summary of your reasoning for both parts in natural language, referencing premise numbers.
+
+Below is an example:
+###
+Premises: 
+1. Selecting a major requires ≥ 24 general education credits, general GPA ≥ 2.5 (scale 0–4), all general courses passed (grade ≥ 2.0).
+2. General courses are 3 credits; each retake after failing (grade < 2.0) costs $50 per attempt.
+3. Students must retake failed general courses until passed; no limit on attempts if fees paid.
+4. General GPA includes only passed courses; failed attempts contribute 0 credits.
+5. A student has 18 general credits, GPA 2.7, failed C1 (3 credits, grade 1.8, 2 attempts, $100 paid).
+6. The student retakes C1 (grade 2.2, $50), passes C2 (3 credits, grade 2.5), pays all fees.
+
+Question: What is the student’s updated general GPA after the new courses?
+
+Extract answer to output format: 
+    -Final answer: 2.61
+    -idx: [3, 4, 5]
+    -Explanation: Premise 4 gives 18 credits, GPA 2.7, C1 (3 credits, 1.8, failed, 0 credits per Premise 3). Passed credits: 18, points: 2.7 × 18 = 48.6. Premise 5 adds: C1 re-enroll (3 credits, 2.2, points 3 × 2.2 = 6.6), C2 (3 credits, 2.5, points 3 × 2.5 = 7.5). Total credits: 18 + 3 + 3 = 24, points: 48.6 + 6.6 + 7.5 = 62.7. GPA: 62.7 / 24 = 2.6125, rounded to 2.61.
+-----
+Ensure your reasoning uses only the given premises and adheres to the inference rules. If a question part involves a conditional statement, treat the antecedent as a premise and prioritize it over conflicting premises.
+This is an example to guide you in solving another problem. Please do not use the knowledge in this example to solve other problems.

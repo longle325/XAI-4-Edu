@@ -1,0 +1,81 @@
+The task is to determine the numerical answer that satisfies the conditions of the given question based on the premises. The answer may be an integer, a float (often with one or two decimals), or a monetary value (with "$" in front). If multiple values are requested, present them in the question's order, separated by commas with no spaces (e.g., "6.0,7.0"). You need to carefully and logically calculate the correct numerical answer step by step.
+
+
+-----
+
+### Instructions
+You will solve the question step by step, using reasoning capabilities and arithmetic operations. For each step:
+- Explain your reasoning in natural language, referencing premises (e.g., "Premise 1") or prior steps (e.g., "Step 3").
+- Use only the given premises to infer the conclusion.
+- Perform necessary calculations explicitly, showing each arithmetic operation.
+- When dealing with currency, always include the "$" symbol in the final answer.
+- Round decimal numbers to 2 places unless specified otherwise.
+
+After your reasoning, provide the final answer in this format:
+
+Final answer: numerical value(s)
+idx: a list of premise indices used, in ascending order without duplicates. The list must avoid Over-inclusion and Under-inclusion.
+explanation: a brief but detailed natural language explanation (2-6 sentences) summarizing your reasoning process. Clearly mention what premise you use for the answer here.
+
+-----
+
+### Example (Faculty Publication Count)
+
+Premises:
+1. If a faculty member has completed training, they can teach undergraduate courses.
+2. If a faculty member can teach undergraduate courses and holds a PhD, they can supervise graduate students.
+3. If a faculty member can supervise graduate students and has at least 3 publications, they can serve on curriculum committees.
+4. If a faculty member can serve on curriculum committees and has a positive teaching evaluation, they can propose new courses.
+5. Professor John has completed pedagogical training.
+6. Professor John holds a PhD.
+7. Professor John has published at least 3 academic papers.
+8. Professor John has received a positive teaching evaluation.
+9. Faculty members receive a $100 bonus for each publication beyond the first two, up to a maximum of 5 eligible for a bonus.
+10. Professor Smith has 4 publications and meets all criteria to propose new courses.
+
+Question:
+What is the minimum number of publications Professor John has, and what is the publication bonus for Professor Smith?
+
+Execution:
+
+Step 1: Determine Professor John's minimum publications.
+- Premise 7 states: "Professor John has published at least 3 academic papers."
+- Therefore, the minimum number of publications for Professor John is 3.
+
+Step 2: Determine Professor Smith's publication bonus.
+- Premise 10 states: "Professor Smith has 4 publications."
+- Premise 9 states: "Faculty members receive a $100 bonus for each publication beyond the first two, up to a maximum of 5 eligible for a bonus."
+- Publications beyond the first two for Prof. Smith: 4 - 2 = 2 publications.
+- Each of these 2 publications is eligible for a $100 bonus (since 2 is less than the max of 5 bonus-eligible publications).
+- Bonus amount: 2 publications * $100/publication = $200.
+
+Final answer: 3, $200
+idx: [7,9,10]
+explanation: Premise 7 directly states Professor John has at least 3 publications. For Professor Smith, Premise 10 gives 4 publications. According to Premise 9, publications beyond the first two (4-2=2) get a $100 bonus each, so Professor Smith gets 2 * $100 = $200.
+
+-----
+
+### Solve the Following
+
+- These are the Context (premises) and the question you need to solve:
+   Context:  [[CONTEXT]]
+
+   Question: [[QUESTION]]
+
+- Here is the reasoning plan which you should follow to help solve this problem.
+
+   Plan: [[PLAN]]
+
+- Make sure you carefully follow the requirements:
+
+   1. Determine the numerical answer based on the premises.
+   2.  **Premise Exclusivity:** Use *only* the information given in the premises. Do not introduce external knowledge, common sense assumptions beyond very basic arithmetic principles, or values not derivable from the premises. If a piece of information seems missing, you must work only with what is present.
+   3.  **Logical Soundness:** All calculations and derivations must be logically sound. Explicitly state how premises and prior steps logically connect to form new conclusions or calculations.
+   4.  **Step-by-Step Derivation:**
+       *   Break down the problem into sequential, manageable steps.
+       *   For each step, clearly explain the reasoning in natural language.
+       *   Explicitly state which premise(s) or prior step(s) are used for each calculation or inference.
+       *   Show all significant arithmetic operations. Do not skip intermediate calculations if they are crucial for understanding the derivation.
+   5.  **Units and Precision:**
+       *   Pay close attention to units if mentioned or implied in the premises. Ensure consistency in calculations.
+       *   For monetary values, always include the "$" symbol in the final answer (and intermediate steps where appropriate).

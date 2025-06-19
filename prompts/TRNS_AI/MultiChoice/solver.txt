@@ -1,0 +1,185 @@
+The task is to determine which of the given options (A, B, C, D) is correct based on the premises provided. You must use only the information given in the premises and apply logical inference rules to arrive at your conclusion.
+
+-----
+
+You must refer to the following inference rules when making logical deductions. These rules guide how to draw conclusions from given statements in natural language:
+
+1. **If-Then Elimination (Modus Ponens)**: If "If P, then Q" is true and "P" is true, then "Q" is true.
+2. **Denying the Consequent (Modus Tollens)**: If "If P, then Q" is true and "Q" is false, then "P" is false.
+3. **For All (Universal Instantiation)**: If "All X are P" is true, then "C is P" is true for any specific C.
+4. **For All Introduction**: If "P" is true for every specific C, you can infer "All X are P".
+5. **There Exists (Existential Instantiation)**: If "Some X are P" is true, you can infer "C is P" for some specific C.
+6. **There Exists Introduction**: If "C is P" is true for some specific C, you can infer "Some X are P".
+7. **And Introduction**: If "P" is true and "Q" is true, you can infer "P and Q".
+8. **And Elimination**: From "P and Q", you can infer "P" and also infer "Q".
+9. **Or Introduction**: If "P" is true, you can infer "P or Q". Similarly, if "Q" is true, infer "P or Q".
+10. **Or Elimination**: From "P or Q" and "not P", infer "Q". Similarly, from "P or Q" and "not Q", infer "P".
+11. **If and Only If Introduction**: If "If P, then Q" and "If Q, then P" are both true, infer "P if and only if Q".
+12. **If and Only If Elimination**: From "P if and only if Q", infer "If P, then Q" and "If Q, then P".
+13. **Negation Introduction (Reductio ad Absurdum)**: If assuming "not P" leads to a contradiction, infer "P".
+14. **Negation Elimination**: If "not not P" is true, infer "P".
+15. **Hypothetical Syllogism**: If "If P, then Q" and "If Q, then R" are both true, then "If P, then R" is true.
+16. **Disjunctive Syllogism**: If "P or Q" is true and "not P" is true, then "Q" is true. Similarly, if "P or Q" is true and "not Q" is true, then "P" is true.
+
+-----
+
+Please solve the question step by step, using the provided inference rules. During each step, indicate which rule you used and explain your reasoning in natural language. If you use a premise or a previously derived conclusion, specify it clearly (e.g., "From Premise 1 and Step 3").
+
+After your reasoning, provide the final answer in the format:
+
+```
+Final answer: {A/B/C/D}
+idx: [list of premise indices used]
+explanation: A brief summary of your reasoning in natural language.
+```
+
+Ensure your reasoning uses only the given premises and adheres to the inference rules. If the question involves a conditional statement, treat the antecedent as a premise and prioritize it over conflicting premises.
+
+-----
+
+### Example 1
+
+**Premises**:
+1. If a person exercises regularly, they are healthy.
+2. If a person is healthy, they have high energy levels.
+3. Sarah exercises regularly.
+4. If a person has high energy levels, they perform well at work.
+
+**Question**: Based on the premises, which statement about Sarah is correct?  
+A. Sarah performs well at work.  
+B. Sarah does not have high energy levels.  
+C. Sarah does not exercise regularly.  
+D. Sarah is not healthy.
+
+**Execution**:
+
+**Step 1**: Identify the goal. We need to determine which statement (A, B, C, or D) about Sarah is correct based on the premises.
+
+**Step 2**: Use Premise 3: "Sarah exercises regularly." From Premise 1: "If a person exercises regularly, they are healthy." By **If-Then Elimination (Modus Ponens)**, since Sarah exercises regularly, she is healthy.
+
+**Step 3**: Use Step 2: "Sarah is healthy." From Premise 2: "If a person is healthy, they have high energy levels." By **If-Then Elimination (Modus Ponens)**, since Sarah is healthy, she has high energy levels.
+
+**Step 4**: Use Step 3: "Sarah has high energy levels." From Premise 4: "If a person has high energy levels, they perform well at work." By **If-Then Elimination (Modus Ponens)**, since Sarah has high energy levels, she performs well at work.
+
+**Step 5**: Evaluate the options:
+- A: "Sarah performs well at work" – True, from Step 4.
+- B: "Sarah does not have high energy levels" – False, contradicts Step 3.
+- C: "Sarah does not exercise regularly" – False, contradicts Premise 3.
+- D: "Sarah is not healthy" – False, contradicts Step 2.
+
+**Step 6**: Conclude. Option A is correct.
+
+```
+Final answer: {A}
+idx: [1, 2, 3, 4]
+explanation: Sarah exercises regularly (Premise 3 and Premise 1), so she is healthy; thus she has high energy (Premise 2), and therefore performs well at work (Premise 4).
+```
+
+-----
+
+### Example 2
+
+**Premises**:
+1. All employees who meet deadlines receive a bonus.
+2. Some employees who receive a bonus also get a promotion.
+3. No employee who misses deadlines gets a promotion.
+4. Mark meets deadlines.
+5. Lisa misses deadlines.
+
+**Question**: Based on the premises, which statement is correct?  
+A. Mark gets a promotion.  
+B. Lisa receives a bonus.  
+C. Some employees who meet deadlines get a promotion.  
+D. All employees who receive a bonus get a promotion.
+
+**Execution**:
+
+**Step 1**: Identify the goal. Determine which statement (A, B, C, or D) is correct based on the premises.
+
+**Step 2**: Use Premise 4: "Mark meets deadlines." From Premise 1: "All employees who meet deadlines receive a bonus." By **For All (Universal Instantiation)**, since Mark meets deadlines, he receives a bonus.
+
+**Step 3**: Use Premise 5: "Lisa misses deadlines." From Premise 3: "No employee who misses deadlines gets a promotion." By **For All (Universal Instantiation)**, since Lisa misses deadlines, she does not get a promotion.
+
+**Step 4**: Evaluate Option A: "Mark gets a promotion."
+- From Step 2, Mark receives a bonus. Premise 2 states: "Some employees who receive a bonus also get a promotion." This means it’s possible but not certain that Mark gets a promotion. We cannot conclude this definitively.
+
+**Step 5**: Evaluate Option B: "Lisa receives a bonus."
+- Premise 5 states Lisa misses deadlines, but no premise states that missing deadlines prevents receiving a bonus. However, Premise 1 applies only to those who meet deadlines, and no information suggests Lisa receives a bonus. We cannot infer this.
+
+**Step 6**: Evaluate Option C: "Some employees who meet deadlines get a promotion."
+- From Premise 1, all who meet deadlines receive a bonus.
+- From Premise 2, some who receive a bonus get a promotion.
+- By **Transitive Inference**, since meeting deadlines leads to a bonus, and some with a bonus get a promotion, it follows that some who meet deadlines get a promotion.
+
+**Step 7**: Evaluate Option D: "All employees who receive a bonus get a promotion."
+- Premise 2 says "some" receive a promotion, not "all." This contradicts Option D, making it false.
+
+**Step 8**: Conclude. Option C is correct.
+
+```
+Final answer: {C}
+idx: [1, 2]
+explanation: Since every deadline-meeting employee gets a bonus (Premise 1) and some bonus-receivers get promotions (Premise 2), it follows that some employees who meet deadlines get a promotion.
+```
+
+-----
+
+### Example 3
+
+**Premises**:
+1. If a car has a full tank, it can travel long distances.
+2. If a car can travel long distances, it is suitable for road trips.
+3. Car A does not have a full tank.
+4. Car B is not suitable for road trips.
+
+**Question**: Based on the premises, which statement about Car A is correct?  
+A. Car A is suitable for road trips.  
+B. Car A can travel long distances.  
+C. Car A cannot travel long distances.  
+D. Car A has a full tank.
+
+**Execution**:
+
+**Step 1**: Identify the goal. Determine which statement about Car A is correct.
+
+**Step 2**: Use Premise 3: "Car A does not have a full tank." From Premise 1: "If a car has a full tank, it can travel long distances." By **Denying the Consequent (Modus Tollens)**, since Car A does not have a full tank, it cannot travel long distances.
+
+**Step 3**: Evaluate the options:
+- A: "Car A is suitable for road trips" – Unknown; Step 2 shows it cannot travel long distances, and Premise 2 suggests this is needed, but it’s not definitive.
+- B: "Car A can travel long distances" – False, from Step 2.
+- C: "Car A cannot travel long distances" – True, from Step 2.
+- D: "Car A has a full tank" – False, from Premise 3.
+
+**Step 4**: Conclude. Option C is correct.
+
+```
+Final answer: {C}
+idx: [1, 3]
+explanation:  Since Car A does not have a full tank (Premise 3) and having a full tank is required to travel long distances (Premise 1), it follows that Car A cannot travel long distances.
+```
+
+-----
+
+### Solve the Following
+
+- These are the Context (premises) and the question you need to solve:
+   **Context**:  [[CONTEXT]]
+
+   **Question**: [[QUESTION]]
+
+- Here is the reasoning plan which you should follow to help solve this problem.
+
+   **Plan**: [[PLAN]]
+
+- Make sure you carefully follow the requirements:
+1. Please clearly indicate whether the chosen option is "A", "B", "C", or "D". The answer must only be one of "A", "B", "C", or "D".
+2. Make sure you use only the premises to infer the conclusion. Do not use any information that does not exist or cannot be inferred from the premises. If some premise is semantically equivalent, such as "love the most" and "favorite", you can consider this as a valid assumption. You can make assumptions about entities if they are obvious but not about logical relationships. For instance, an entity with an obvious human name can be inferred as a human.
+3. Abide by the 16 inference rules provided. Indicate which rule you use in each step.
+4. Please note that if there is a conditional statement in the conclusion (e.g., "If..."), the "if" part should be treated as a premise. If there is a premise that contradicts the "if" statement, prioritize the "if" statement and disregard the conflicting premise.
+5. Clearly indicate which premises or prior steps you use in each inference.
+6. Explain each step in natural language, referencing the premises or steps used.
+7. When inferring new knowledge, clearly indicate which premises or previous steps you used. For example, if you use Premise 1 and a conclusion from Step 5, state "From Premise 1 and Step 5".
+8. You should also use natural language to explain the logical process in each step. Please indicate the premises and steps you refer to when making the logical process.
+9. After providing the final answer, include:
+   - "idx": a list of the indices of the premises used in your reasoning, in ascending order without duplicates.
+   - "explanation": a brief but detailed natural language explanation (2-6 sentences) summarizing your reasoning process. Clearly mention what premise you use for the answer here.

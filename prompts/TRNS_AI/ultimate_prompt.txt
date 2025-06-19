@@ -1,0 +1,58 @@
+   **Your task**: Given the premises and the question, provide a concise, logical, and focused reasoning path using only the most relevant premises to answer the question step by step. Limit your reasoning to essential steps only.
+
+   **Response format**:
+
+   1. **Final answer**: Your answer to the question. Choose one of four formats based on the question type:
+      a. Yes/No/Uncertain: If the question asks whether a statement is true (Yes), false (No), or cannot be definitively concluded (Uncertain). Only output "Yes", "No", or "Uncertain". Don't give any additional content.
+      b. Multiple choice (A/B/C/D): If the question asks to select the true statement from four options. Only output "A", "B", "C","D".
+      c. Numerical: If the answer is an integer, float (with one decimal,round up only if the second decimal digit is 5 or more, e.g., 7.14 → 7.1, 7.15 → 7.2), or a monetary value (with "\$" prefix). For multiple values, list them in order separated by commas (e.g., `6.0, 7.0`).
+      d.Chained: For questions requiring two sub-answers: a Yes/No/Uncertain followed by a numerical value (e.g., Yes, 6.5 where the numerical value is an integer, float with one decimal mainly, rounding up only when necessary such as 6.54 to 6.5, or a monetary value with "$" prefix), two Yes/No/Uncertain (e.g., No, No), or a numerical value followed by a Yes/No/Uncertain (e.g., 2.3, No where the numerical value is an integer, float with one decimal mainly, rounding up only when necessary such as 2.34 to 2.3, or a monetary value with "$" prefix).
+
+   2. **idx**: A list of the indices of the premises used for reasoning of your final answer, in ascending order without duplicates (index starts from 1).
+   3. **explanation**: A brief explanation (2–6 sentences) citing only the key premises mentioned in idx.
+
+   **Note:** Use only premises that are directly relevant. Focus on an efficient reasoning path with essential steps only. Use your reasoning capabilities to decide the appropriate format for "Final answer". Don't give any additional context
+   ----------------
+   ***Example 1***:
+   **Given premises**:
+      1.Selecting a major requires ≥ 24 general education credits, general GPA ≥ 2.5 (scale 0–4), all general courses passed (grade ≥ 2.0).
+      2.General courses are 3 credits; each retake after failing (grade < 2.0) costs $50 per attempt.
+      3.Students must retake failed general courses until passed; no limit on attempts if fees paid.
+      4.General GPA includes only passed courses; failed attempts contribute 0 credits.
+      5.A student has 18 general credits, GPA 2.7, failed C1 (3 credits, grade 1.8, 2 attempts, $100 paid).
+      6.The student retakes C1 (grade 2.2, $50), passes C2 (3 credits, grade 2.5), pays all fees.
+   **Question**: How many general credits has the student accumulated, and can they select a major?
+   **Output**:
+      ```
+      Final answer: 24, Yes
+      idx: [1, 4, 5, 6]
+      explanation: Premise 4 gives 18 credits. Premise 5 adds: C1 re-enroll (3 credits), C2 (3 credits). Total credits: 18 + 3 + 3 = 24. Premise 1 requires: ≥ 24 credits (24, passes), GPA ≥ 2.5 (2.61 from Q0, passes), all grades ≥ 2.0 (C1: 2.2, C2: 2.5, others ≥ 2.0 per initial GPA, passes). The student can select a major.
+      ```
+   ------------------
+   ***Example 2***: 
+   **Given premises**:
+      1.Students who have completed the core curriculum and passed the science assessment are qualified for advanced courses.
+      2.Students who are qualified for advanced courses and have completed research methodology are eligible for the international program.
+      3.Students who have passed the language proficiency exam are eligible for the international program.
+      4.Students who are eligible for the international program and have completed a capstone project are awarded an honors diploma.
+      5.Students who have been awarded an honors diploma and have completed community service qualify for the university scholarship.
+      6.Students who have been awarded an honors diploma and have received a faculty recommendation qualify for the university scholarship.
+      7.Sophia has completed the core curriculum.
+      8.Sophia has passed the science assessment.
+      9.Sophia has completed the research methodology course.
+      10.Sophia has completed her capstone project.
+      11.Sophia has completed the required community service hours.
+   **Question**: "Based on the above premises, which is the strongest conclusion?\nA. Sophia qualifies for the university scholarship\nB. Sophia needs a faculty recommendation to qualify for the scholarship\nC. Sophia is eligible for the international program\nD. Sophia needs to pass the language proficiency exam to get an honors diploma"
+   **Output**:
+      ```
+      Final answer: A
+      idx: [1, 2, 4, 5, 7, 8, 9, 10, 11]
+      explanation: Premise 4 gives 18 credits. Premise 5 adds: C1 re-enroll (3 credits), C2 (3 credits). Total credits: 18 + 3 + 3 = 24. Premise 1 requires: ≥ 24 credits (24, passes), GPA ≥ 2.5 (2.61 from Q0, passes), all grades ≥ 2.0 (C1: 2.2, C2: 2.5, others ≥ 2.0 per initial GPA, passes). The student can select a major.
+      ```
+   ------------------
+   Now answer this: 
+   **Given premises**:
+   [[CONTEXT]]
+
+   **Question**: [[QUESTION]]
+   **Output**:

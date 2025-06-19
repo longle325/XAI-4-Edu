@@ -1,0 +1,98 @@
+The task is to determine whether the value of the conclusion/question is Yes, No, or Uncertain based on the premises.
+
+
+Please solve the question step by step, using the provided inference rules. During each step, indicate which rule you used and explain your reasoning in natural language. If you use a premise or a previously derived conclusion, specify it clearly (e.g., "From Premise 1 and Step 3").
+
+
+-----
+
+### Example 1
+
+**Premises**:
+1. If a student completes all required courses, they are eligible for graduation.
+2. If a student is eligible for graduation and has a GPA above 3.5, they graduate with honors.
+3. If a student graduates with honors and completes a thesis, they receive academic distinction.
+4. If a student receives academic distinction, they qualify for a fellowship.
+5. John completed all required courses.
+6. John has a GPA above 3.5.
+7. John completed a thesis.
+
+**Question**: Does John receive academic distinction?
+
+**Execution**:
+
+**Step 1**: Identify the goal. We need to determine if "John receives academic distinction" is true based on the premises.
+
+**Step 2**: Use Premise 5: "John completed all required courses." From Premise 1: "If a student completes all required courses, they are eligible for graduation." By **If-Then Elimination (Modus Ponens)**, since John completed the courses, he is eligible for graduation.
+
+**Step 3**: Use Premise 6: "John has a GPA above 3.5." From Step 2, John is eligible for graduation. By **And Introduction**, we have "John is eligible for graduation and has a GPA above 3.5." From Premise 2: "If a student is eligible for graduation and has a GPA above 3.5, they graduate with honors." By **If-Then Elimination (Modus Ponens)**, John graduates with honors.
+
+**Step 4**: Use Premise 7: "John completed a thesis." From Step 3, John graduates with honors. By **And Introduction**, "John graduates with honors and completed a thesis." From Premise 3: "If a student graduates with honors and completes a thesis, they receive academic distinction." By **If-Then Elimination (Modus Ponens)**, John receives academic distinction.
+
+**Step 5**: Conclude. Since we derived "John receives academic distinction," the answer is true.
+
+```
+Final answer: Yes
+idx: [1,2,3,5,6,7]
+explanation: Academic distinction per premise 3 requires graduating with honors and completing a thesis. Premise 2 requires graduation eligibility and a GPA above 3.5, and premise 1 requires course completion. Premises 5–7 confirm John’s course completion, GPA of 3.8, and thesis, satisfying all conditions for academic distinction.
+```
+
+
+-----
+
+### Example 2
+
+**Premises**:
+1. All students who complete the required courses are eligible for graduation.
+2. Some students who are eligible for graduation have a GPA above 3.5.
+3. No student with a GPA above 3.5 fails the final exam.
+4. John is a student who completed the required courses.
+5. John has a GPA above 3.5.
+
+**Question**: Did John pass the final exam?
+
+**Execution**:
+
+**Step 1**: Identify the goal. We need to determine if "John passed the final exam" is true, false, or unknown.
+
+
+**Step 2**: Use Premise 5: "John has a GPA above 3.5." From Premise 3: "No student with a GPA above 3.5 fails the final exam." Since John has a GPA above 3.5, he did not fail the final exam.
+
+**Step 3**: Interpret "not failing." In common usage, "not failing" the final exam means passing it, assuming a pass/fail dichotomy unless otherwise specified. The premises don’t suggest otherwise.
+
+**Step 4**: Conclude. Since John did not fail the final exam, he passed it based on the premises.
+
+```
+Final answer: Yes
+idx: [3,5]
+explanation: From Premise 5 and Premise 3, since John has a GPA above 3.5 and no student with such a GPA fails the final exam, John did not fail the final exam. Assuming a pass/fail system, this means John passed the final exam.
+```
+
+-----
+
+### Solve the Following
+
+- These are the Context (premises) and the question you need to solve:
+   **Context**:  [[CONTEXT]]
+
+   **Question**: [[QUESTION]]
+- Here is the detailed plan that helps you solve question:
+   **Plan**: [[PLAN]]
+
+- Make sure you carefully follow the requirements:
+   1. Indicate the answer as {Yes/No/Uncertain} based on the definitions provided.
+      - Yes: The conclusion necessarily follows from the premises.
+      - No: The conclusion is contradicted by the premises or its negation is inferred.
+      - Uncertain: Insufficient information to determine the conclusion’s truth value.
+   2. Use only the premises to infer the conclusion. Do not introduce external information.
+   3. For conditional conclusions (e.g., "If P, then Q"), treat the antecedent as a premise and prioritize it over conflicting premises.
+   4. Clearly indicate which premises or prior steps you use in each inference.
+   5. Explain each step in natural language, referencing the premises or steps used.
+
+
+After your reasoning, provide the final answer in the format:
+```
+Final answer: {Yes/No/Uncertain}
+idx: [list of premise indices used]
+explanation: A brief summary of your reasoning in natural language (1-2 sentences). You should include the premises used for the inference.
+```
