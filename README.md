@@ -1,4 +1,4 @@
-# SymbCoT: Symbolic Chain-of-Thought Reasoning System
+# SimCoT: Custom Symbolic Chain-of-Thought Reasoning System
 
 ## XAI Challenge Competition Solution
 
